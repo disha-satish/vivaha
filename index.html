@@ -224,6 +224,20 @@ section{position:relative;min-height:100svh;display:flex;flex-direction:column;a
 .fshare{margin-top:26px}
 .fam{margin:6px 0 0;color:var(--gold);font-family:Lora,Georgia,serif;font-size:14px;letter-spacing:.08em}
 
+
+.sapta.kunda{width:min(360px,100%);margin-top:18px}
+.flames path{transform-box:fill-box;transform-origin:50% 100%}
+.fl1{animation:flick 1.3s ease-in-out infinite alternate}
+.fl2{animation:flick 1.05s ease-in-out infinite alternate-reverse}
+.fl2.r{animation-duration:1.2s}
+.fl3{animation:flick .9s ease-in-out infinite alternate}
+.fl4{animation:flick .7s ease-in-out infinite alternate-reverse}
+@keyframes flick{0%{transform:scale(1,1) skewX(-3deg)}40%{transform:scale(.94,1.08) skewX(3deg)}70%{transform:scale(1.04,.94) skewX(-2deg)}100%{transform:scale(.97,1.05) skewX(2deg)}}
+.fglow{transform-box:fill-box;transform-origin:50% 60%;animation:breathe 1.6s ease-in-out infinite alternate}
+.sparks circle{animation:spark 2.4s linear infinite;opacity:0}
+.sparks circle:nth-child(2){animation-delay:.6s}.sparks circle:nth-child(3){animation-delay:1.2s}.sparks circle:nth-child(4){animation-delay:1.8s}
+@keyframes spark{0%{opacity:0;transform:translateY(0)}15%{opacity:1}100%{opacity:0;transform:translateY(-46px) translateX(6px)}}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .diya,.shrine,.halo,.rays,.mantra,.lead,.names .w,.knames,.saptapadi,.invite,.vivaha,.next,.reveal,.ev .node{opacity:1!important;transform:none!important}
@@ -304,9 +318,39 @@ section{position:relative;min-height:100svh;display:flex;flex-direction:column;a
     <p class="kicker reveal">॥ ಆಶೀರ್ವಾದ ॥</p>
     <h2 class="reveal">A Sacred Union</h2>
     <p class="msg reveal">With the blessings of Lord Ganesha and our elders, Disha and Satish will take the sacred Saptapadi. We seek your gracious presence and blessings on this auspicious occasion.</p>
-    <svg class="sapta reveal" viewBox="0 0 330 116" role="img" aria-label="Seven footprints of the Saptapadi">
-      <path d="M14 96 C70 96 60 30 120 46 S200 100 250 54 S300 40 320 56" fill="none" stroke="#d9b26a" stroke-opacity=".55" stroke-width="1.2" stroke-dasharray="2 6"/>
-      <g class="step" style="--i:0" transform="translate(30 74) rotate(-12)"><circle r="17" fill="url(#gl)" class="halo2"/><use href="#foot" x="-9" y="-17" width="18" height="33"/></g><g class="step" style="--i:1" transform="translate(75 50) rotate(12) scale(-1 1)"><circle r="17" fill="url(#gl)" class="halo2"/><use href="#foot" x="-9" y="-17" width="18" height="33"/></g><g class="step" style="--i:2" transform="translate(120 74) rotate(-12)"><circle r="17" fill="url(#gl)" class="halo2"/><use href="#foot" x="-9" y="-17" width="18" height="33"/></g><g class="step" style="--i:3" transform="translate(165 50) rotate(12) scale(-1 1)"><circle r="17" fill="url(#gl)" class="halo2"/><use href="#foot" x="-9" y="-17" width="18" height="33"/></g><g class="step" style="--i:4" transform="translate(210 74) rotate(-12)"><circle r="17" fill="url(#gl)" class="halo2"/><use href="#foot" x="-9" y="-17" width="18" height="33"/></g><g class="step" style="--i:5" transform="translate(255 50) rotate(12) scale(-1 1)"><circle r="17" fill="url(#gl)" class="halo2"/><use href="#foot" x="-9" y="-17" width="18" height="33"/></g><g class="step" style="--i:6" transform="translate(300 74) rotate(-12)"><circle r="17" fill="url(#gl)" class="halo2"/><use href="#foot" x="-9" y="-17" width="18" height="33"/></g>
+    <svg class="sapta kunda reveal" viewBox="0 0 330 222" role="img" aria-label="Homa kunda with sacred fire and the seven footprints of Saptapadi">
+      <defs>
+        <linearGradient id="cop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0904a"/><stop offset=".5" stop-color="#a8541e"/><stop offset="1" stop-color="#6a2e0c"/></linearGradient>
+        <linearGradient id="copS" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6a2e0c"/><stop offset=".45" stop-color="#d9874a"/><stop offset="1" stop-color="#5a260a"/></linearGradient>
+        <radialGradient id="fireGlow" cx="50%" cy="60%" r="50%"><stop offset="0" stop-color="#ffcf6a" stop-opacity=".85"/><stop offset=".45" stop-color="#ff8a1e" stop-opacity=".35"/><stop offset="1" stop-color="#ff6a00" stop-opacity="0"/></radialGradient>
+        <linearGradient id="fOut" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#d93a0b"/><stop offset=".5" stop-color="#ff7a18"/><stop offset="1" stop-color="#ffb347" stop-opacity=".85"/></linearGradient>
+        <linearGradient id="fMid" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ff8a1e"/><stop offset="1" stop-color="#ffd25a"/></linearGradient>
+        <linearGradient id="fIn" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ffe9a0"/><stop offset="1" stop-color="#fffbe6"/></linearGradient>
+      </defs>
+      <ellipse cx="165" cy="150" rx="138" ry="48" fill="none" stroke="#d9b26a" stroke-opacity=".35" stroke-width="1" stroke-dasharray="2 6"/>
+      <ellipse class="fglow" cx="165" cy="96" rx="78" ry="70" fill="url(#fireGlow)"/>
+      <!-- flames -->
+      <g class="flames">
+        <path class="fl1" d="M165 128 C138 120 134 92 150 72 C150 88 158 92 160 84 C158 66 168 50 172 38 C176 58 192 70 188 92 C186 106 180 118 165 128 Z" fill="url(#fOut)"/>
+        <path class="fl2" d="M146 128 C132 118 136 100 144 92 C145 104 150 108 152 102 C154 112 154 122 146 128 Z" fill="url(#fOut)"/>
+        <path class="fl2 r" d="M186 128 C200 118 196 100 188 92 C187 104 182 108 180 102 C178 112 178 122 186 128 Z" fill="url(#fOut)"/>
+        <path class="fl3" d="M165 128 C150 122 148 104 158 90 C160 100 164 102 166 96 C166 86 172 78 175 72 C180 88 186 100 180 114 C177 122 172 126 165 128 Z" fill="url(#fMid)"/>
+        <path class="fl4" d="M165 128 C157 124 156 112 162 104 C164 110 167 110 168 106 C172 112 174 122 165 128 Z" fill="url(#fIn)"/>
+      </g>
+      <g class="sparks" fill="#ffd25a"><circle cx="160" cy="70" r="1.4"/><circle cx="172" cy="62" r="1.1"/><circle cx="152" cy="78" r="1"/><circle cx="180" cy="74" r="1.2"/></g>
+      <!-- samidha sticks -->
+      <g stroke="#5a2a0c" stroke-width="4" stroke-linecap="round"><path d="M140 130 L182 118"/><path d="M190 130 L148 118"/></g>
+      <!-- stepped homa kunda -->
+      <path d="M104 128 H226 L220 142 H110 Z" fill="url(#copS)"/>
+      <path d="M104 128 H226" stroke="#f3d27a" stroke-width="2"/>
+      <path d="M112 142 H218 L212 156 H118 Z" fill="url(#cop)"/>
+      <path d="M112 142 H218" stroke="#f3d27a" stroke-width="1.6"/>
+      <path d="M120 156 H210 L204 170 H126 Z" fill="url(#copS)"/>
+      <path d="M120 156 H210" stroke="#f3d27a" stroke-width="1.4"/>
+      <path d="M126 170 H204" stroke="#f3d27a" stroke-width="1.2"/>
+      <g fill="#c8102e"><circle cx="135" cy="135" r="2"/><circle cx="165" cy="135" r="2.4"/><circle cx="195" cy="135" r="2"/></g>
+      <path d="M150 149 h30 M146 163 h38" stroke="#f3d27a" stroke-opacity=".5" stroke-width="1"/>
+      <g class="step" style="--i:0" transform="translate(21.0 142.0) rotate(180)"><circle r="15" fill="url(#gl)" class="halo2"/><use href="#foot" x="-8" y="-15" width="16" height="29"/></g><g class="step" style="--i:1" transform="translate(50.7 172.8) rotate(150) scale(-1 1)"><circle r="15" fill="url(#gl)" class="halo2"/><use href="#foot" x="-8" y="-15" width="16" height="29"/></g><g class="step" style="--i:2" transform="translate(93.0 193.6) rotate(120)"><circle r="15" fill="url(#gl)" class="halo2"/><use href="#foot" x="-8" y="-15" width="16" height="29"/></g><g class="step" style="--i:3" transform="translate(165.0 195.6) rotate(90) scale(-1 1)"><circle r="15" fill="url(#gl)" class="halo2"/><use href="#foot" x="-8" y="-15" width="16" height="29"/></g><g class="step" style="--i:4" transform="translate(237.0 193.6) rotate(60)"><circle r="15" fill="url(#gl)" class="halo2"/><use href="#foot" x="-8" y="-15" width="16" height="29"/></g><g class="step" style="--i:5" transform="translate(279.3 172.8) rotate(30) scale(-1 1)"><circle r="15" fill="url(#gl)" class="halo2"/><use href="#foot" x="-8" y="-15" width="16" height="29"/></g><g class="step" style="--i:6" transform="translate(309.0 142.0) rotate(0)"><circle r="15" fill="url(#gl)" class="halo2"/><use href="#foot" x="-8" y="-15" width="16" height="29"/></g>
     </svg>
     <p class="saptacap reveal">Seven steps, seven vows, seven lifetimes of togetherness</p>
   </div>
