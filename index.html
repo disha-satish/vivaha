@@ -27,41 +27,45 @@ body{margin:0;background:var(--night);color:var(--ivory);font:17px/1.55 "Cormora
 section{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 18px;text-align:center;overflow:hidden}
 .wrap{position:relative;z-index:2;width:100%;max-width:520px;display:flex;flex-direction:column;align-items:center}
 
-/* ---------- Page 1: the reveal ---------- */
-#welcome{padding-top:96px;background:radial-gradient(90% 60% at 50% 38%,#5c1430 0%,#3a0a1f 45%,var(--night) 100%)}
+/* ---------- Page 1: the reveal (fits one screen) ---------- */
+#welcome{height:100svh;min-height:560px;padding:clamp(70px,11svh,96px) 16px clamp(10px,2svh,22px);justify-content:space-between;background:radial-gradient(90% 60% at 50% 38%,#5c1430 0%,#3a0a1f 45%,var(--night) 100%)}
 #welcome::before{content:"";position:absolute;inset:0;opacity:.08;background-image:radial-gradient(var(--gold) 1px,transparent 1.5px);background-size:24px 24px}
-.toran{position:absolute;top:0;left:0;right:0;height:70px;z-index:1;display:flex;justify-content:center;gap:0}
-.toran svg{width:100%;max-width:760px;height:70px}
-.mantra{font-family:"Noto Serif Devanagari",serif;font-weight:700;color:var(--gold);font-size:19px;margin:0 0 14px;opacity:0}
-.shrine{position:relative;width:min(70vw,300px);aspect-ratio:588/686;margin:0 auto;opacity:0;transform:scale(.92)}
-.halo{position:absolute;inset:-22%;border-radius:50%;background:radial-gradient(circle,rgba(255,206,120,.55) 0%,rgba(242,162,58,.25) 35%,transparent 68%);opacity:0;z-index:0}
-.rays{position:absolute;inset:-30%;z-index:0;opacity:0;background:repeating-conic-gradient(from 0deg,rgba(255,215,140,.16) 0deg 6deg,transparent 6deg 18deg);-webkit-mask:radial-gradient(circle,#000 20%,transparent 66%);mask:radial-gradient(circle,#000 20%,transparent 66%)}
-.arch{position:relative;z-index:1;width:100%;height:100%;border-radius:50% 50% 10px 10px / 34% 34% 10px 10px;overflow:hidden;border:3px solid var(--gold);box-shadow:0 0 0 5px rgba(42,6,20,.9),0 0 0 7px var(--gold),0 0 40px rgba(255,190,90,.55)}
+#welcome .wrap{height:100%;justify-content:space-evenly}
+.toran{position:absolute;top:0;left:0;right:0;z-index:4;pointer-events:none}
+.toran svg{display:block;width:100%;height:auto;filter:drop-shadow(0 4px 4px rgba(0,0,0,.45))}
+.mantra{font-family:"Noto Serif Devanagari",serif;font-weight:700;color:var(--gold);font-size:clamp(15px,2.4svh,19px);margin:0;opacity:0}
+.shrine{position:relative;height:clamp(150px,33svh,320px);aspect-ratio:588/686;margin:0 auto;opacity:0;transform:scale(.92)}
+.halo{position:absolute;inset:-24%;border-radius:50%;background:radial-gradient(circle,rgba(255,206,120,.55) 0%,rgba(242,162,58,.25) 35%,transparent 68%);opacity:0;z-index:0}
+.rays{position:absolute;inset:-34%;z-index:0;opacity:0;background:repeating-conic-gradient(from 0deg,rgba(255,215,140,.16) 0deg 6deg,transparent 6deg 18deg);-webkit-mask:radial-gradient(circle,#000 20%,transparent 66%);mask:radial-gradient(circle,#000 20%,transparent 66%)}
+.arch{position:relative;z-index:1;width:100%;height:100%;border-radius:50% 50% 8px 8px / 34% 34% 8px 8px;overflow:hidden;border:3px solid var(--gold);box-shadow:0 0 0 4px rgba(42,6,20,.9),0 0 0 6px var(--gold),0 0 36px rgba(255,190,90,.55)}
 .arch img{display:block;width:100%;height:100%;object-fit:cover}
-.diyas{position:relative;z-index:2;width:100%;display:flex;justify-content:space-between;margin-top:-62px;padding:0 2px}
-.diya{width:74px;height:84px;opacity:0}
+.diya{position:absolute;bottom:-9%;width:30%;height:auto;z-index:2;opacity:0}
+.diya.l{left:-22%}.diya.r{right:-22%}
 .diya .glow{transform-origin:50% 60%}
 .diya .flame{transform-origin:50% 100%}
-.lead{font-style:italic;color:#ecd9c4;font-size:19px;margin:22px 0 0;opacity:0}
-.names{display:flex;flex-direction:column;align-items:center;font-family:"Great Vibes",cursive;font-weight:400;color:var(--gold2);font-size:clamp(54px,16vw,78px);line-height:1;margin:4px 0 0;text-shadow:0 2px 14px rgba(0,0,0,.5),0 0 24px rgba(243,220,158,.25)}
+.words{display:flex;flex-direction:column;align-items:center;gap:clamp(2px,.8svh,8px)}
+.lead{font-style:italic;color:#ecd9c4;font-size:clamp(15px,2.4svh,19px);margin:0;opacity:0}
+.names{font-family:"Great Vibes",cursive;font-weight:400;color:var(--gold2);font-size:clamp(36px,min(11vw,7.4svh),62px);line-height:1.1;margin:0;white-space:nowrap;text-shadow:0 2px 14px rgba(0,0,0,.5),0 0 24px rgba(243,220,158,.25)}
 .names .w{display:inline-block;opacity:0}
-.names .and{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:.38em;color:var(--gold);margin:.05em 0 .1em;line-height:1}
-.saptapadi{font-family:"Noto Serif Devanagari",serif;font-weight:600;color:var(--gold);font-size:18px;margin:6px 0 0;opacity:0}
-.invite{font-style:italic;color:#ecd9c4;font-size:19px;margin:8px 0 0;opacity:0}
-.vivaha{font-family:"Noto Serif Kannada",serif;font-weight:700;color:var(--marigold);font-size:24px;margin:14px 0 0;opacity:0;letter-spacing:.02em;text-shadow:0 0 18px rgba(242,162,58,.55)}
-.next{display:inline-flex;flex-direction:column;align-items:center;gap:2px;margin-top:22px;color:var(--gold);text-decoration:none;font-weight:600;font-size:16px;letter-spacing:.06em;opacity:0;min-height:44px}
+.names .and{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:.42em;color:var(--gold);margin:0 .35em;vertical-align:.3em}
+.saptapadi{font-family:"Noto Serif Devanagari",serif;font-weight:600;color:var(--gold);font-size:clamp(14px,2.2svh,18px);margin:0;opacity:0}
+.invite{font-style:italic;color:#ecd9c4;font-size:clamp(15px,2.4svh,19px);line-height:1.35;margin:0;opacity:0}
+.vivaha{font-family:"Noto Serif Kannada",serif;font-weight:700;color:var(--marigold);font-size:clamp(18px,3svh,24px);margin:0;opacity:0;letter-spacing:.02em;text-shadow:0 0 18px rgba(242,162,58,.55)}
+.next{display:inline-flex;flex-direction:column;align-items:center;gap:0;color:var(--gold);text-decoration:none;font-weight:600;font-size:15px;letter-spacing:.06em;opacity:0;min-height:44px;justify-content:center}
 .next svg{animation:bob 1.6s ease-in-out infinite}
-.petal{position:absolute;top:-30px;z-index:3;width:12px;height:16px;border-radius:60% 60% 50% 50% / 70% 70% 30% 30%;pointer-events:none;opacity:.9}
+.fall{position:absolute;top:-40px;left:0;z-index:5;pointer-events:none;will-change:transform}
+.fall .spin{display:block;will-change:transform}
+.fall svg{display:block;filter:drop-shadow(0 2px 2px rgba(0,0,0,.35))}
 
 /* reveal timeline */
-.on .diya{animation:fadeup .8s ease-out forwards}
-.on .diya.r{animation-delay:.25s}
+.on .diya{animation:fade .8s ease-out 1.6s forwards}
+.on .diya.r{animation-delay:1.85s}
 .on .diya .flame{animation:flicker 1.4s ease-in-out infinite alternate}
 .on .diya .glow{animation:breathe 2.2s ease-in-out infinite alternate}
-.on .shrine{animation:reveal 1.6s cubic-bezier(.2,.7,.2,1) .9s forwards}
+.on .shrine{animation:reveal 1.6s cubic-bezier(.2,.7,.2,1) .4s forwards}
 .on .halo{animation:fade 1.6s ease-out 1.2s forwards,breathe 3s ease-in-out 2.8s infinite alternate}
 .on .rays{animation:fade 2s ease-out 1.6s forwards,spin 60s linear 1.6s infinite}
-.on .mantra{animation:fade 1s ease-out 2.4s forwards}
+.on .mantra{animation:fade 1s ease-out 2.2s forwards}
 .on .lead{animation:fadeup .9s ease-out 3.1s forwards}
 .on .names .w1{animation:write 1.1s ease-out 3.6s forwards}
 .on .names .w2{animation:fade .8s ease-out 4.3s forwards}
@@ -80,7 +84,8 @@ section{position:relative;min-height:100svh;display:flex;flex-direction:column;a
 @keyframes breathe{from{opacity:.65;transform:scale(.94)}to{opacity:1;transform:scale(1.06)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes bob{50%{transform:translateY(6px)}}
-@keyframes fall{0%{transform:translate(0,0) rotate(0)}100%{transform:translate(var(--dx),110svh) rotate(var(--r))}}
+@keyframes drop{0%{transform:translate3d(0,0,0)}25%{transform:translate3d(calc(var(--dx) * 0.4),28vh,0)}50%{transform:translate3d(calc(var(--dx) * -0.2),56vh,0)}75%{transform:translate3d(calc(var(--dx) * 0.7),84vh,0)}100%{transform:translate3d(var(--dx),112vh,0)}}
+@keyframes tumble{0%{transform:rotateX(0) rotateY(0) rotateZ(var(--r0))}100%{transform:rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(calc(var(--r0) + 360deg))}}
 
 /* ---------- Page 2: the card ---------- */
 #card{background:linear-gradient(180deg,var(--night),var(--maroon) 40%,var(--maroon) 60%,var(--night))}
@@ -112,7 +117,7 @@ h2{font-family:"Cormorant Garamond",serif;font-weight:700;color:var(--gold);font
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .diya,.shrine,.halo,.rays,.mantra,.lead,.names .w,.saptapadi,.invite,.vivaha,.next,.reveal{opacity:1!important;transform:none!important}
-  .petal{display:none}
+  .fall{display:none}
 }
 </style>
 </head>
@@ -120,28 +125,23 @@ h2{font-family:"Cormorant Garamond",serif;font-weight:700;color:var(--gold);font
 
 <!-- Page 1 -->
 <section id="welcome">
-  <div class="toran" aria-hidden="true">
-    <svg viewBox="0 0 760 70" preserveAspectRatio="xMidYMin slice">
-      <path d="M0 6 Q380 34 760 6" fill="none" stroke="#3f7d3a" stroke-width="3"/>
-      <g id="mg"></g>
-    </svg>
-  </div>
+  <div class="toran" aria-hidden="true"><svg id="garland"></svg></div>
   <div class="wrap">
     <p class="mantra">॥ श्री गणेशाय नमः ॥</p>
     <div class="shrine">
       <div class="rays" aria-hidden="true"></div>
       <div class="halo" aria-hidden="true"></div>
       <div class="arch"><img src="ganesha.jpg" alt="Lord Ganesha" width="588" height="686"></div>
+      <svg class="diya l" viewBox="0 0 74 84" aria-hidden="true"><use href="#diya"/></svg>
+      <svg class="diya r" viewBox="0 0 74 84" aria-hidden="true"><use href="#diya"/></svg>
     </div>
-    <div class="diyas" aria-hidden="true">
-      <svg class="diya l" viewBox="0 0 74 84"><use href="#diya"/></svg>
-      <svg class="diya r" viewBox="0 0 74 84"><use href="#diya"/></svg>
+    <div class="words">
+      <p class="lead">Parents and families of</p>
+      <h1 class="names"><span class="w w1">Disha</span><span class="w w2 and">and</span><span class="w w3">Satish</span></h1>
+      <p class="saptapadi">॥ सखा सप्तपदी भव ॥</p>
+      <p class="invite">cordially invite you to join the occasion<br>of their vivāha</p>
+      <p class="vivaha">॥ ಶುಭ ವಿವಾಹ ॥</p>
     </div>
-    <p class="lead">Parents and families of</p>
-    <h1 class="names"><span class="w w1">Disha</span><span class="w w2 and">and</span><span class="w w3">Satish</span></h1>
-    <p class="saptapadi">॥ सखा सप्तपदी भव ॥</p>
-    <p class="invite">cordially invite you to join the occasion<br>of their vivāha</p>
-    <p class="vivaha">॥ ಶುಭ ವಿವಾಹ ॥</p>
     <a class="next" href="#card">View invitation
       <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
@@ -197,6 +197,17 @@ h2{font-family:"Cormorant Garamond",serif;font-weight:700;color:var(--gold);font
     <radialGradient id="gl" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffd27a" stop-opacity=".85"/><stop offset=".45" stop-color="#f2a23a" stop-opacity=".35"/><stop offset="1" stop-color="#f2a23a" stop-opacity="0"/></radialGradient>
     <linearGradient id="fl" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ff7a1a"/><stop offset=".55" stop-color="#ffc23d"/><stop offset="1" stop-color="#fff4c2"/></linearGradient>
     <linearGradient id="clay" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0a24a"/><stop offset="1" stop-color="#8a4a17"/></linearGradient>
+
+    <!-- marigold (genda) flower: layered ruffled petals -->
+    <radialGradient id="mgO" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#ffb347"/><stop offset=".55" stop-color="#f07a12"/><stop offset="1" stop-color="#b8470a"/></radialGradient>
+    <radialGradient id="mgY" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#ffe27a"/><stop offset=".55" stop-color="#f8b31c"/><stop offset="1" stop-color="#c47a08"/></radialGradient>
+    <radialGradient id="mgC" cx="50%" cy="40%" r="60%"><stop offset="0" stop-color="#fff0b0" stop-opacity=".9"/><stop offset="1" stop-color="#fff0b0" stop-opacity="0"/></radialGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f9a3a"/><stop offset="1" stop-color="#1f5a22"/></linearGradient>
+    <linearGradient id="pO" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffc061"/><stop offset=".6" stop-color="#f27c14"/><stop offset="1" stop-color="#b9480b"/></linearGradient>
+    <linearGradient id="pY" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff0a0"/><stop offset=".6" stop-color="#f9b81f"/><stop offset="1" stop-color="#c47c08"/></linearGradient>
+    <linearGradient id="pR" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff6b7d"/><stop offset=".55" stop-color="#c8102e"/><stop offset="1" stop-color="#7a0717"/></linearGradient>
+    <symbol id="petal" viewBox="0 0 20 26"><path d="M10 1 C17 5 19 14 15 21 C13 24 7 24 5 21 C1 14 3 5 10 1 Z"/><path d="M10 4 C9 10 9 16 10 22" fill="none" stroke="#000" stroke-opacity=".12" stroke-width="1"/></symbol>
+    <symbol id="rose" viewBox="0 0 22 22"><path d="M11 1 C19 2 22 10 19 16 C16 21 6 22 3 16 C0 10 3 2 11 1 Z"/><path d="M6 6 C9 4 14 4 16 7" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1.2"/></symbol>
     <symbol id="diya" viewBox="0 0 74 84">
       <circle class="glow" cx="37" cy="36" r="34" fill="url(#gl)"/>
       <path class="flame" d="M37 14 C30 26 30 36 37 42 C44 36 44 26 37 14 Z" fill="url(#fl)"/>
@@ -212,40 +223,91 @@ h2{font-family:"Cormorant Garamond",serif;font-weight:700;color:var(--gold);font
 <script>
 {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // marigold toran
-  const mg = document.getElementById('mg');
-  let s = '';
-  for (let i = 0; i < 31; i++) {
-    const x = 6 + i * 24.9, y = 6 + 28 * (1 - Math.pow((x - 380) / 380, 2));
-    const c = i % 2 ? '#f2a23a' : '#e8761a';
-    s += `<circle cx="${x}" cy="${y}" r="8" fill="${c}"/><circle cx="${x}" cy="${y}" r="3.2" fill="#b4530f"/>`;
-    if (i % 3 === 0) s += `<line x1="${x}" y1="${y+8}" x2="${x}" y2="${y+30}" stroke="#d9b26a" stroke-width="1.2"/><circle cx="${x}" cy="${y+34}" r="4" fill="#f2a23a"/>`;
-  }
-  mg.innerHTML = s;
+  const NS = 'http://www.w3.org/2000/svg';
+  // one marigold head as SVG markup (layered ruffled petals)
+  const marigold = (x, y, r, grad) => {
+    let g = `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)})">`;
+    g += `<circle r="${r}" fill="url(#${grad})"/>`;
+    const rings = [[r*.78, 14, r*.36, r*.22, 0], [r*.52, 11, r*.32, r*.2, 13], [r*.26, 8, r*.26, r*.17, 5]];
+    for (const [d, n, ry, rx, off] of rings) {
+      for (let i = 0; i < n; i++) {
+        const a = off + i * 360 / n;
+        g += `<ellipse cx="0" cy="${-d}" rx="${rx.toFixed(1)}" ry="${ry.toFixed(1)}" transform="rotate(${a.toFixed(1)})" fill="url(#${grad})" stroke="#7a2e05" stroke-opacity=".28" stroke-width=".6"/>`;
+      }
+    }
+    g += `<circle r="${(r*.32).toFixed(1)}" fill="url(#mgC)"/></g>`;
+    return g;
+  };
+  const leafAt = (x, y, ang, len) => `<path transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${ang.toFixed(1)})" d="M0 0 C${len*.3} ${-len*.28} ${len*.75} ${-len*.22} ${len} 0 C${len*.75} ${len*.22} ${len*.3} ${len*.28} 0 0 Z" fill="url(#leaf)"/><path transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${ang.toFixed(1)})" d="M0 0 L${len*.95} 0" stroke="#bfe39a" stroke-opacity=".45" stroke-width="1"/>`;
+
+  const drawGarland = () => {
+    const svg = document.getElementById('garland');
+    const W = Math.max(320, Math.round(svg.parentNode.clientWidth || innerWidth));
+    const r = W < 500 ? 10 : 12, H = W < 500 ? 96 : 112;
+    const swags = W < 500 ? 2 : 3, sw = W / swags, dip = r * 2.6;
+    let out = '', leaves = '';
+    // mango leaves at the tie points
+    for (let k = 0; k <= swags; k++) {
+      const x = k * sw;
+      for (const a of [-160, -125, -55, -20]) leaves += leafAt(x, r * .9, a + 90, r * 2.6);
+    }
+    for (let k = 0; k < swags; k++) {
+      const n = Math.round(sw / (r * 1.55));
+      for (let i = 0; i <= n; i++) {
+        const t = i / n, x = k * sw + t * sw, y = r + dip * 4 * t * (1 - t);
+        out += marigold(x, y, r, (i + k) % 2 ? 'mgY' : 'mgO');
+      }
+      // hanging strand (lari) from the bottom of each swag
+      const cx = k * sw + sw / 2, cy = r + dip, len = 3;
+      for (let j = 1; j <= len; j++) out += marigold(cx, cy + j * r * 1.6, r * .82, j % 2 ? 'mgO' : 'mgY');
+      out += `<path d="M${cx-4} ${cy + (len+.6)*r*1.6} l4 ${r*1.6} l4 ${-r*1.6} z" fill="#d9b26a"/>`;
+    }
+    // small strands at the tie points
+    for (let k = 0; k <= swags; k++) {
+      const x = Math.min(Math.max(k * sw, r), W - r);
+      for (let j = 1; j <= 2; j++) out += marigold(x, r + j * r * 1.55, r * .75, j % 2 ? 'mgY' : 'mgO');
+    }
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    svg.innerHTML = `<path d="M0 ${r} ${Array.from({length: swags}, (_, k) => `Q${k*sw + sw/2} ${r + dip*2} ${(k+1)*sw} ${r}`).join(' ')}" fill="none" stroke="#6b3d12" stroke-width="1.5"/>` + leaves + out;
+  };
+  drawGarland();
+  let gt; addEventListener('resize', () => { clearTimeout(gt); gt = setTimeout(drawGarland, 200); });
 
   // start the reveal once fonts are ready (or after a short wait)
   const start = () => { const w = document.getElementById('welcome'); w.classList.add('on'); setTimeout(() => w.classList.add('done'), 8600); };
   (document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1500))]) : Promise.resolve()).then(start);
 
-  // falling marigold petals on the first page
+  // falling flowers: marigold & rose petals and the odd whole marigold, mostly over Lord Ganesha
   if (!reduce) {
     const sec = document.getElementById('welcome');
-    const cols = ['#f2a23a', '#e8761a', '#ffc94d', '#d9472b'];
-    const drop = () => {
-      const p = document.createElement('span');
-      p.className = 'petal';
-      p.style.left = Math.random() * 100 + '%';
-      p.style.background = cols[Math.floor(Math.random() * cols.length)];
-      p.style.setProperty('--dx', (Math.random() * 120 - 60) + 'px');
-      p.style.setProperty('--r', (Math.random() * 540 - 270) + 'deg');
-      const dur = 6 + Math.random() * 5;
-      p.style.animation = `fall ${dur}s linear forwards`;
-      sec.appendChild(p);
-      setTimeout(() => p.remove(), dur * 1000 + 200);
+    const kinds = [['petal','pO',14,18],['petal','pO',14,18],['petal','pY',14,18],['petal','pY',13,17],['rose','pR',15,15],['rose','pR',13,13],['whole','',22,22]];
+    const drop = (burst) => {
+      const [kind, grad, w, h] = kinds[Math.floor(Math.random() * kinds.length)];
+      const sc = .8 + Math.random() * .6;
+      const el = document.createElement('span'); el.className = 'fall';
+      const centre = Math.random() < .7;
+      const x = centre ? 0.5 * innerWidth + (Math.random() - .5) * Math.min(innerWidth * .62, 330) : Math.random() * innerWidth;
+      el.style.left = x + 'px';
+      el.style.setProperty('--dx', (Math.random() * 90 - 45) + 'px');
+      const dur = 7 + Math.random() * 5;
+      el.style.animation = `drop ${dur}s linear forwards`;
+      if (burst) el.style.top = (-20 - Math.random() * 120) + 'px';
+      const sp = document.createElement('span'); sp.className = 'spin';
+      sp.style.setProperty('--r0', (Math.random() * 360) + 'deg');
+      sp.style.setProperty('--rx', (Math.random() > .5 ? 1 : -1) * (360 + Math.random() * 540) + 'deg');
+      sp.style.setProperty('--ry', (Math.random() > .5 ? 1 : -1) * (180 + Math.random() * 360) + 'deg');
+      sp.style.animation = `tumble ${3 + Math.random() * 3}s linear infinite`;
+      const ww = Math.round(w * sc), hh = Math.round(h * sc);
+      sp.innerHTML = kind === 'whole'
+        ? `<svg width="${ww}" height="${hh}" viewBox="-12 -12 24 24">${marigold(0, 0, 10, Math.random() > .5 ? 'mgO' : 'mgY')}</svg>`
+        : `<svg width="${ww}" height="${hh}" viewBox="0 0 ${kind === 'rose' ? '22 22' : '20 26'}"><use href="#${kind}" fill="url(#${grad})"/></svg>`;
+      el.appendChild(sp); sec.appendChild(el);
+      setTimeout(() => el.remove(), dur * 1000 + 300);
     };
-    setTimeout(() => { for (let i = 0; i < 10; i++) setTimeout(drop, i * 260); }, 2600);
-    const petalTimer = setInterval(drop, 900);
-    setTimeout(() => clearInterval(petalTimer), 45000);
+    // a shower of flowers as Lord Ganesha appears, then a gentle continuous fall
+    setTimeout(() => { for (let i = 0; i < 26; i++) setTimeout(() => drop(true), i * 70); }, 1100);
+    const timer = setInterval(() => drop(false), 650);
+    setTimeout(() => clearInterval(timer), 60000);
   }
 
   // gentle reveal for pages 2 and 3
