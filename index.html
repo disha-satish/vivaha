@@ -54,7 +54,7 @@ section{position:relative;min-height:100svh;display:flex;flex-direction:column;a
 .vivaha{font-family:"Noto Serif Kannada",serif;font-weight:700;color:var(--marigold);font-size:clamp(18px,3svh,24px);margin:0;opacity:0;letter-spacing:.02em;text-shadow:0 0 18px rgba(242,162,58,.55)}
 .next{display:inline-flex;flex-direction:column;align-items:center;gap:0;color:var(--gold);text-decoration:none;font-weight:600;font-size:15px;letter-spacing:.06em;opacity:0;min-height:44px;justify-content:center}
 .next svg{animation:bob 1.6s ease-in-out infinite}
-.fall{position:absolute;top:-40px;left:0;z-index:5;pointer-events:none;will-change:transform}
+.fall{position:absolute;top:0;left:0;z-index:3;pointer-events:none;will-change:transform,opacity}
 .fall .spin{display:block;will-change:transform}
 .fall svg{display:block;filter:drop-shadow(0 2px 2px rgba(0,0,0,.35))}
 
@@ -86,6 +86,7 @@ section{position:relative;min-height:100svh;display:flex;flex-direction:column;a
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes bob{50%{transform:translateY(6px)}}
 @keyframes drop{0%{transform:translate3d(0,0,0)}25%{transform:translate3d(calc(var(--dx) * 0.4),28vh,0)}50%{transform:translate3d(calc(var(--dx) * -0.2),56vh,0)}75%{transform:translate3d(calc(var(--dx) * 0.7),84vh,0)}100%{transform:translate3d(var(--dx),112vh,0)}}
+@keyframes pour{0%{transform:translate3d(0,0,0);opacity:0}8%{opacity:1}30%{transform:translate3d(calc(var(--dx) * .35),calc(var(--fy) * .3),0)}60%{transform:translate3d(calc(var(--dx) * -.15),calc(var(--fy) * .62),0)}86%{opacity:1}100%{transform:translate3d(var(--dx),var(--fy),0);opacity:0}}
 @keyframes tumble{0%{transform:rotateX(0) rotateY(0) rotateZ(var(--r0))}100%{transform:rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(calc(var(--r0) + 360deg))}}
 
 /* ---------- Countdown band ---------- */
@@ -407,6 +408,32 @@ section{position:relative;min-height:100svh;display:flex;flex-direction:column;a
       <path d="M-11 -5 Q0 -7 11 -5 Q8 2 0 2 Q-8 2 -11 -5 Z" fill="url(#brassK)"/>
     </symbol>
     <symbol id="mgFlower" viewBox="-12 -12 24 24"><circle r="10" fill="url(#mgO)"/><g fill="url(#mgY)"><circle cx="0" cy="-5" r="3.6"/><circle cx="4.8" cy="-1.6" r="3.6"/><circle cx="3" cy="4" r="3.6"/><circle cx="-3" cy="4" r="3.6"/><circle cx="-4.8" cy="-1.6" r="3.6"/></g><circle r="2.6" fill="url(#mgC)"/></symbol>
+    <symbol id="jasmine" viewBox="-12 -12 24 24">
+      <g fill="#fffdf6" stroke="#e8dcc0" stroke-width=".5">
+        <ellipse cx="0" cy="-6" rx="2.9" ry="5.6"/>
+        <ellipse cx="0" cy="-6" rx="2.9" ry="5.6" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-6" rx="2.9" ry="5.6" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-6" rx="2.9" ry="5.6" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-6" rx="2.9" ry="5.6" transform="rotate(288)"/>
+      </g>
+      <circle r="2" fill="#f3e3a6"/><circle r=".9" fill="#d9b26a"/>
+    </symbol>
+    <symbol id="jbud" viewBox="0 0 10 24">
+      <path d="M5 1 C8.5 4 8.5 12 5 16 C1.5 12 1.5 4 5 1 Z" fill="#fffaf0" stroke="#e8dcc0" stroke-width=".5"/>
+      <path d="M5 16 V23" stroke="#7fa65a" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M3.4 15.5 L5 18 L6.6 15.5" fill="#8cb866"/>
+    </symbol>
+    <radialGradient id="hibG" cx="50%" cy="50%" r="55%"><stop offset="0" stop-color="#7a0614"/><stop offset=".35" stop-color="#c8102e"/><stop offset="1" stop-color="#ef3b4f"/></radialGradient>
+    <symbol id="hibiscus" viewBox="-14 -14 28 28">
+      <g fill="url(#hibG)" stroke="#9c0a1f" stroke-width=".4">
+        <path d="M0 0 C-6 -4 -7 -12 0 -13 C7 -12 6 -4 0 0 Z"/>
+        <path d="M0 0 C-6 -4 -7 -12 0 -13 C7 -12 6 -4 0 0 Z" transform="rotate(72)"/>
+        <path d="M0 0 C-6 -4 -7 -12 0 -13 C7 -12 6 -4 0 0 Z" transform="rotate(144)"/>
+        <path d="M0 0 C-6 -4 -7 -12 0 -13 C7 -12 6 -4 0 0 Z" transform="rotate(216)"/>
+        <path d="M0 0 C-6 -4 -7 -12 0 -13 C7 -12 6 -4 0 0 Z" transform="rotate(288)"/>
+      </g>
+      <path d="M0 0 L5 -9" stroke="#f3c86e" stroke-width="1.2"/><circle cx="5" cy="-9" r="1.6" fill="#ffd54a"/>
+    </symbol>
     <symbol id="kalasha" viewBox="0 0 48 48">
       <path d="M17 16 C12 10 9 11 6 12 C10 14 13 16 17 17 Z M31 16 C36 10 39 11 42 12 C38 14 35 16 31 17 Z M20 15 C18 8 15 6 12 6 C15 9 17 12 19 16 Z M28 15 C30 8 33 6 36 6 C33 9 31 12 29 16 Z" fill="#5fa047"/>
       <ellipse cx="24" cy="12" rx="6" ry="7" fill="#9a6a2a"/><path d="M20 9 q4 -4 8 0" stroke="#d9b26a" stroke-width="1" fill="none"/>
@@ -492,37 +519,42 @@ section{position:relative;min-height:100svh;display:flex;flex-direction:column;a
 
   const start = () => { const w = document.getElementById('welcome'); w.classList.add('on'); setTimeout(() => w.classList.add('done'), 8600); };
 
-  // falling flowers: marigold & rose petals and the odd whole marigold, mostly over Lord Ganesha
+  // pooja flowers (jasmine, marigold, hibiscus, rose) showering only on Lord Ganesha
   const petals = () => { if (reduce) return;
-    const sec = document.getElementById('welcome');
-    const kinds = [['petal','pO',14,18],['petal','pO',14,18],['petal','pY',14,18],['petal','pY',13,17],['rose','pR',15,15],['rose','pR',13,13],['whole','',22,22]];
-    const drop = (burst) => {
-      const [kind, grad, w, h] = kinds[Math.floor(Math.random() * kinds.length)];
-      const sc = .8 + Math.random() * .6;
+    const shrine = document.querySelector('.shrine');
+    const kinds = [
+      ['jasmine', 18, 18], ['jasmine', 16, 16], ['jasmine', 18, 18], ['jbud', 8, 19], ['jbud', 8, 19],
+      ['whole', 20, 20], ['whole', 17, 17], ['petal:pO', 12, 15], ['petal:pY', 12, 15],
+      ['hibiscus', 22, 22], ['rose:pR', 13, 13], ['rose:pR', 12, 12]
+    ];
+    const drop = () => {
+      const W = shrine.offsetWidth, H = shrine.offsetHeight;
+      const [kind, w, h] = kinds[Math.floor(Math.random() * kinds.length)];
+      const sc = .85 + Math.random() * .5, ww = Math.round(w * sc), hh = Math.round(h * sc);
       const el = document.createElement('span'); el.className = 'fall';
-      const centre = Math.random() < .7;
-      const x = centre ? 0.5 * innerWidth + (Math.random() - .5) * Math.min(innerWidth * .62, 330) : Math.random() * innerWidth;
-      el.style.left = x + 'px';
-      el.style.setProperty('--dx', (Math.random() * 90 - 45) + 'px');
-      const dur = 7 + Math.random() * 5;
-      el.style.animation = `drop ${dur}s linear forwards`;
-      if (burst) el.style.top = (-20 - Math.random() * 120) + 'px';
+      el.style.left = (W * (.08 + Math.random() * .84) - ww / 2) + 'px';
+      const startY = -(H * (.25 + Math.random() * .2));
+      el.style.top = startY + 'px';
+      el.style.setProperty('--dx', (Math.random() * 40 - 20) + 'px');
+      el.style.setProperty('--fy', (H * (.88 + Math.random() * .1) - startY) + 'px');
+      const dur = 4.5 + Math.random() * 3;
+      el.style.animation = `pour ${dur}s cubic-bezier(.3,.1,.6,1) forwards`;
       const sp = document.createElement('span'); sp.className = 'spin';
       sp.style.setProperty('--r0', (Math.random() * 360) + 'deg');
-      sp.style.setProperty('--rx', (Math.random() > .5 ? 1 : -1) * (360 + Math.random() * 540) + 'deg');
-      sp.style.setProperty('--ry', (Math.random() > .5 ? 1 : -1) * (180 + Math.random() * 360) + 'deg');
+      sp.style.setProperty('--rx', (Math.random() > .5 ? 1 : -1) * (180 + Math.random() * 360) + 'deg');
+      sp.style.setProperty('--ry', (Math.random() > .5 ? 1 : -1) * (90 + Math.random() * 270) + 'deg');
       sp.style.animation = `tumble ${3 + Math.random() * 3}s linear infinite`;
-      const ww = Math.round(w * sc), hh = Math.round(h * sc);
-      sp.innerHTML = kind === 'whole'
-        ? `<svg width="${ww}" height="${hh}" viewBox="-12 -12 24 24">${marigold(0, 0, 10, Math.random() > .5 ? 'mgO' : 'mgY')}</svg>`
-        : `<svg width="${ww}" height="${hh}" viewBox="0 0 ${kind === 'rose' ? '22 22' : '20 26'}"><use href="#${kind}" fill="url(#${grad})"/></svg>`;
-      el.appendChild(sp); sec.appendChild(el);
+      let art;
+      if (kind === 'whole') art = `<svg width="${ww}" height="${hh}" viewBox="-12 -12 24 24">${marigold(0, 0, 10, Math.random() > .5 ? 'mgO' : 'mgY')}</svg>`;
+      else if (kind.includes(':')) { const [k, g] = kind.split(':'); art = `<svg width="${ww}" height="${hh}" viewBox="0 0 ${k === 'rose' ? '22 22' : '20 26'}"><use href="#${k}" fill="url(#${g})"/></svg>`; }
+      else art = `<svg width="${ww}" height="${hh}"><use href="#${kind}" width="${ww}" height="${hh}"/></svg>`;
+      sp.innerHTML = art; el.appendChild(sp); shrine.appendChild(el);
       setTimeout(() => el.remove(), dur * 1000 + 300);
     };
-    // a shower of flowers as Lord Ganesha appears, then a gentle continuous fall
-    setTimeout(() => { for (let i = 0; i < 26; i++) setTimeout(() => drop(true), i * 70); }, 1100);
-    const timer = setInterval(() => drop(false), 650);
-    setTimeout(() => clearInterval(timer), 60000);
+    // an offering of flowers as Lord Ganesha appears, then a gentle continuous shower
+    setTimeout(() => { for (let i = 0; i < 18; i++) setTimeout(drop, i * 110); }, 1300);
+    const timer = setInterval(drop, 520);
+    setTimeout(() => clearInterval(timer), 90000);
   };
 
   // ---------- sound: temple bell + soft tanpura drone (made in the browser, no file needed) ----------
