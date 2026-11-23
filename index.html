@@ -251,20 +251,39 @@ section{position:relative;min-height:100svh;display:flex;flex-direction:column;a
   <p class="om">ॐ</p>
   <div class="bellglow" aria-hidden="true"></div>
   <div class="bellwrap" aria-hidden="true">
-    <svg viewBox="0 0 120 170">
+    <svg viewBox="0 0 120 180">
       <defs>
-        <linearGradient id="brass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a5a12"/><stop offset=".35" stop-color="#f3d27a"/><stop offset=".55" stop-color="#d9a740"/><stop offset="1" stop-color="#7a4c0c"/></linearGradient>
+        <linearGradient id="brass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7a4c0c"/><stop offset=".3" stop-color="#f6d98a"/><stop offset=".55" stop-color="#d9a740"/><stop offset="1" stop-color="#6e420a"/></linearGradient>
         <linearGradient id="brass2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6dc8e"/><stop offset="1" stop-color="#a8721a"/></linearGradient>
+        <radialGradient id="mgO" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#ffb347"/><stop offset=".6" stop-color="#f07a12"/><stop offset="1" stop-color="#b8470a"/></radialGradient>
+        <radialGradient id="mgY" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#ffe27a"/><stop offset=".6" stop-color="#f8b31c"/><stop offset="1" stop-color="#c47a08"/></radialGradient>
       </defs>
-      <g fill="none" stroke="#d9b26a" stroke-width="3"><ellipse cx="60" cy="8" rx="5" ry="7"/><ellipse cx="60" cy="20" rx="5" ry="7"/><ellipse cx="60" cy="32" rx="5" ry="7"/></g>
-      <path d="M52 40 h16 l3 10 h-22 z" fill="url(#brass2)"/>
-      <circle cx="60" cy="56" r="8" fill="url(#brass)"/>
-      <path d="M60 60 C38 62 30 82 28 110 C27 124 22 132 14 138 H106 C98 132 93 124 92 110 C90 82 82 62 60 60 Z" fill="url(#brass)"/>
-      <path d="M36 96 C48 92 72 92 84 96" fill="none" stroke="#7a4c0c" stroke-width="2"/>
-      <path d="M32 112 C48 108 72 108 88 112" fill="none" stroke="#fff0b8" stroke-opacity=".6" stroke-width="2"/>
-      <rect x="12" y="136" width="96" height="8" rx="4" fill="url(#brass)"/>
-      <circle cx="60" cy="154" r="9" fill="url(#brass2)"/>
-      <path d="M44 72 C40 84 38 96 38 104" fill="none" stroke="#fff6cf" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/>
+      <!-- lotus hook and chain -->
+      <path d="M60 2 C54 6 54 10 60 12 C66 10 66 6 60 2 Z" fill="url(#brass2)"/>
+      <path d="M50 10 C54 12 57 13 60 13 C63 13 66 12 70 10 C66 16 54 16 50 10 Z" fill="url(#brass2)"/>
+      <g fill="none" stroke="#d9b26a" stroke-width="3"><ellipse cx="60" cy="21" rx="4.5" ry="6"/><ellipse cx="60" cy="31" rx="4.5" ry="6"/><ellipse cx="60" cy="41" rx="4.5" ry="6"/></g>
+      <!-- crown of the ghanta -->
+      <path d="M50 48 h20 l4 8 h-28 z" fill="url(#brass2)"/>
+      <circle cx="60" cy="47" r="4" fill="url(#brass)"/>
+      <!-- bell body: temple ghanta -->
+      <path d="M60 56 C40 56 32 70 30 92 C28 114 24 128 12 138 C10 140 11 143 14 143 H106 C109 143 110 140 108 138 C96 128 92 114 90 92 C88 70 80 56 60 56 Z" fill="url(#brass)"/>
+      <path d="M33 84 C45 80 75 80 87 84" fill="none" stroke="#6e420a" stroke-width="1.6"/>
+      <path d="M30 124 C46 120 74 120 90 124" fill="none" stroke="#6e420a" stroke-width="1.6"/>
+      <path d="M26 130 C44 126 76 126 94 130" fill="none" stroke="#fff0b8" stroke-opacity=".55" stroke-width="1.4"/>
+      <g fill="#fff0b8" fill-opacity=".55"><circle cx="30" cy="127.5" r="1.1"/><circle cx="38" cy="127.5" r="1.1"/><circle cx="46" cy="127.5" r="1.1"/><circle cx="54" cy="127.5" r="1.1"/><circle cx="62" cy="127.5" r="1.1"/><circle cx="70" cy="127.5" r="1.1"/><circle cx="78" cy="127.5" r="1.1"/><circle cx="86" cy="127.5" r="1.1"/></g>
+      <rect x="10" y="140" width="100" height="8" rx="4" fill="url(#brass)"/>
+      <!-- tilak and Om -->
+      <path d="M56 86 h8" stroke="#f6c13a" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="60" cy="91" r="2.3" fill="#c8102e"/>
+      <text x="60" y="114" text-anchor="middle" font-family="Noto Serif Devanagari, serif" font-weight="700" font-size="24" fill="#7a1530">ॐ</text>
+      <!-- marigold garland tied round the top -->
+      <circle cx="36" cy="72" r="5.2" fill="url(#mgO)"/><circle cx="36" cy="72" r="1.8" fill="#b4530f"/><circle cx="45" cy="67" r="5.2" fill="url(#mgY)"/><circle cx="45" cy="67" r="1.8" fill="#b4530f"/><circle cx="55" cy="64" r="5.2" fill="url(#mgO)"/><circle cx="55" cy="64" r="1.8" fill="#b4530f"/><circle cx="65" cy="64" r="5.2" fill="url(#mgY)"/><circle cx="65" cy="64" r="1.8" fill="#b4530f"/><circle cx="75" cy="67" r="5.2" fill="url(#mgO)"/><circle cx="75" cy="67" r="1.8" fill="#b4530f"/><circle cx="84" cy="72" r="5.2" fill="url(#mgY)"/><circle cx="84" cy="72" r="1.8" fill="#b4530f"/>
+      <circle cx="40" cy="76" r="3" fill="url(#mgO)"/><circle cx="80" cy="76" r="3" fill="url(#mgY)"/>
+      <!-- highlight -->
+      <path d="M40 88 C37 100 36 112 35 120" fill="none" stroke="#fff6cf" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/>
+      <!-- clapper -->
+      <circle cx="60" cy="160" r="9" fill="url(#brass2)"/>
+      <path d="M60 148 v4" stroke="#a8721a" stroke-width="3"/>
     </svg>
   </div>
   <p class="t1">॥ ಶುಭ ವಿವಾಹ ॥</p>
@@ -317,7 +336,7 @@ section{position:relative;min-height:100svh;display:flex;flex-direction:column;a
   <div class="wrap">
     <p class="kicker reveal">॥ ಆಶೀರ್ವಾದ ॥</p>
     <h2 class="reveal">A Sacred Union</h2>
-    <p class="msg reveal">With the blessings of Lord Ganesha and our elders, Disha and Satish will take the sacred Saptapadi. We seek your gracious presence and blessings on this auspicious occasion.</p>
+    <p class="msg reveal">With the blessings of Lord Ganesha and the elders, Disha and Satish will take the sacred Saptapadi. Your gracious presence and blessings are humbly requested on this auspicious occasion.</p>
     <svg class="sapta kunda reveal" viewBox="0 0 330 228" role="img" aria-label="Homa kunda on a three-step platform with the sacred fire and the seven footprints of Saptapadi going around it clockwise">
       <defs>
         <linearGradient id="cop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0904a"/><stop offset=".5" stop-color="#a8541e"/><stop offset="1" stop-color="#6a2e0c"/></linearGradient>
@@ -426,7 +445,7 @@ section{position:relative;min-height:100svh;display:flex;flex-direction:column;a
     <p class="fnames reveal">Disha &amp; Satish</p>
     <svg class="orn gold reveal" viewBox="0 0 240 24" aria-hidden="true"><path d="M4 12 H96 M144 12 H236" stroke="currentColor" stroke-width="1.2"/><path d="M120 2 L128 12 L120 22 L112 12 Z" fill="currentColor"/><circle cx="104" cy="12" r="2.6" fill="currentColor"/><circle cx="136" cy="12" r="2.6" fill="currentColor"/><circle cx="4" cy="12" r="2" fill="currentColor"/><circle cx="236" cy="12" r="2" fill="currentColor"/></svg>
     <p class="foot reveal">We look forward to your presence and blessings.</p>
-    <p class="fam reveal">With love from both families</p>
+    <p class="fam reveal">With warm regards from both families</p>
   </div>
 </footer>
 
