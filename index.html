@@ -166,9 +166,10 @@ section{position:relative;min-height:100svh;display:flex;flex-direction:column;a
 @keyframes pulse{50%{opacity:.45}}
 
 /* ---------- Music icon: Saraswati with veena ---------- */
-#music{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:40;width:64px;height:64px;border-radius:50%;padding:0;border:2px solid var(--gold);background:radial-gradient(circle at 50% 40%,#7a1d43,#3a0a1f);box-shadow:0 6px 18px rgba(0,0,0,.5),0 0 0 3px rgba(42,6,20,.85),0 0 0 4px rgba(217,178,106,.6);cursor:pointer;display:none;align-items:center;justify-content:center}
+#music{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:40;width:68px;height:68px;border-radius:50%;padding:0;border:0;background:transparent;overflow:visible;box-shadow:0 6px 18px rgba(0,0,0,.5),0 0 0 3px rgba(42,6,20,.85),0 0 0 4px rgba(217,178,106,.6);cursor:pointer;display:none;align-items:center;justify-content:center}
 #music.show{display:flex}
-#music svg{width:56px;height:56px}
+#music img{width:68px;height:68px;border-radius:50%;display:block}
+#music .off{position:absolute;inset:0;width:68px;height:68px}
 #music.playing{animation:glowring 2.4s ease-in-out infinite}
 #music.playing .sv{animation:sway 2.4s ease-in-out infinite;transform-origin:50% 90%}
 #music:not(.playing){filter:saturate(.35) brightness(.8)}
@@ -178,10 +179,25 @@ section{position:relative;min-height:100svh;display:flex;flex-direction:column;a
 @keyframes sway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
 @keyframes glowring{0%,100%{box-shadow:0 6px 18px rgba(0,0,0,.5),0 0 0 3px rgba(42,6,20,.85),0 0 0 4px rgba(217,178,106,.6)}50%{box-shadow:0 6px 18px rgba(0,0,0,.5),0 0 0 3px rgba(42,6,20,.85),0 0 0 4px rgba(217,178,106,.6),0 0 22px 6px rgba(243,200,110,.45)}}
 
+
+/* aura + floating swaras around the Saraswati icon */
+#music::before{content:"";position:absolute;inset:-16px;border-radius:50%;z-index:-1;opacity:0;transition:opacity .8s;
+  background:radial-gradient(circle,rgba(255,214,130,.55) 0%,rgba(242,162,58,.25) 45%,transparent 70%)}
+#music::after{content:"";position:absolute;inset:-22px;border-radius:50%;z-index:-1;opacity:0;transition:opacity .8s;
+  background:repeating-conic-gradient(from 0deg,rgba(255,220,150,.38) 0 8deg,transparent 8deg 24deg);
+  -webkit-mask:radial-gradient(circle,transparent 30px,#000 34px,transparent 58px);mask:radial-gradient(circle,transparent 30px,#000 34px,transparent 58px);animation:spin 14s linear infinite}
+#music.playing::before{opacity:1;animation:aura 2.4s ease-in-out infinite}
+#music.playing::after{opacity:1}
+@keyframes aura{0%,100%{transform:scale(.92)}50%{transform:scale(1.12)}}
+.swara{position:absolute;left:44%;top:-4px;z-index:2;white-space:nowrap;pointer-events:none;font-family:"Noto Serif Devanagari",serif;font-weight:700;color:#ffe3a0;
+  text-shadow:0 0 8px rgba(255,190,90,.9),0 0 16px rgba(242,162,58,.6);opacity:0;animation:swara 3.6s ease-out forwards}
+@keyframes swara{0%{opacity:0;transform:translate(0,0) scale(.6)}15%{opacity:1}100%{opacity:0;transform:translate(var(--sx),var(--sy)) scale(1.15) rotate(var(--sr))}}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .diya,.shrine,.halo,.rays,.mantra,.lead,.names .w,.saptapadi,.invite,.vivaha,.next,.reveal,.ev .node{opacity:1!important;transform:none!important}
   .fall{display:none}
+  .swara{display:none}
 }
 </style>
 </head>
@@ -212,54 +228,8 @@ section{position:relative;min-height:100svh;display:flex;flex-direction:column;a
 </div>
 
 <button id="music" type="button" aria-label="Music on or off" aria-pressed="true">
-  <svg viewBox="0 0 64 64" aria-hidden="true">
-    <defs>
-      <radialGradient id="sHalo" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffe7a8" stop-opacity=".95"/><stop offset=".6" stop-color="#f3c86e" stop-opacity=".45"/><stop offset="1" stop-color="#f3c86e" stop-opacity="0"/></radialGradient>
-      <linearGradient id="sGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff0b8"/><stop offset=".5" stop-color="#e2b44c"/><stop offset="1" stop-color="#a8721a"/></linearGradient>
-      <linearGradient id="sWood" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c7843a"/><stop offset="1" stop-color="#6e3a10"/></linearGradient>
-      <linearGradient id="sLotus" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd1dc"/><stop offset="1" stop-color="#e0607e"/></linearGradient>
-    </defs>
-    <g class="sv">
-      <circle cx="32" cy="17" r="12.5" fill="url(#sHalo)"/>
-      <!-- hair falling behind -->
-      <path d="M25.5 16 C24 24 23 30 22.5 36 L41.5 36 C41 30 40 24 38.5 16 Z" fill="#1c0a0a"/>
-      <!-- crown -->
-      <path d="M26.6 12.6 L27.6 7.6 L29.4 10 L32 5.2 L34.6 10 L36.4 7.6 L37.4 12.6 Z" fill="url(#sGold)" stroke="#8a5a12" stroke-width=".4"/>
-      <circle cx="32" cy="8.6" r=".9" fill="#c8102e"/>
-      <!-- face -->
-      <ellipse cx="32" cy="16.6" rx="4.6" ry="5.2" fill="#f6d2b0"/>
-      <path d="M27.4 14.6 C28.2 11.8 35.8 11.8 36.6 14.6 C35 13.2 29 13.2 27.4 14.6 Z" fill="#1c0a0a"/>
-      <path d="M29.4 16.4 q1 -.7 2 0 M32.6 16.4 q1 -.7 2 0" stroke="#3a1a10" stroke-width=".55" fill="none" stroke-linecap="round"/>
-      <circle cx="32" cy="14.4" r=".55" fill="#c8102e"/>
-      <path d="M30.8 19.6 q1.2 .7 2.4 0" stroke="#b0404a" stroke-width=".6" fill="none" stroke-linecap="round"/>
-      <circle cx="27.4" cy="18" r=".8" fill="url(#sGold)"/><circle cx="36.6" cy="18" r=".8" fill="url(#sGold)"/>
-      <!-- neck & necklace -->
-      <rect x="30.6" y="21" width="2.8" height="2.6" fill="#f0c6a2"/>
-      <path d="M28.6 23.4 Q32 26.4 35.4 23.4" fill="none" stroke="url(#sGold)" stroke-width="1"/>
-      <!-- white saree body with gold border -->
-      <path d="M25 24.4 C27 22.8 37 22.8 39 24.4 L42.4 42 C37 44.6 27 44.6 21.6 42 Z" fill="#fffaf0"/>
-      <path d="M26.2 24.6 C30.4 30 33.6 35.4 40.8 41.2" fill="none" stroke="url(#sGold)" stroke-width="1.6"/>
-      <path d="M21.8 41.6 C27 44 37 44 42.2 41.6" fill="none" stroke="url(#sGold)" stroke-width="1.2"/>
-      <!-- veena: neck from upper left to big gourd at lower right -->
-      <path d="M12.8 25.6 L46.4 40.2" stroke="url(#sWood)" stroke-width="3.2" stroke-linecap="round"/>
-      <path d="M13 25 L46.6 39.6" stroke="#ffe6a6" stroke-width=".5"/>
-      <path d="M13.2 26.4 L46.2 40.8" stroke="#ffe6a6" stroke-width=".35" stroke-opacity=".7"/>
-      <circle cx="14.6" cy="26.4" r="3.6" fill="url(#sWood)" stroke="#e2b44c" stroke-width=".6"/>
-      <path d="M10.6 23.6 C9.4 21.8 10.4 20 12.2 20.6 C11.2 21.6 11.6 22.6 12.8 23.4 Z" fill="url(#sGold)"/>
-      <circle cx="47.2" cy="41" r="6.4" fill="url(#sWood)" stroke="#e2b44c" stroke-width=".8"/>
-      <path d="M43 39 a4.6 4.6 0 0 1 7.6 -1" fill="none" stroke="#f3dc9e" stroke-width=".7" stroke-opacity=".8"/>
-      <!-- arms playing -->
-      <path d="M26 26.6 C22.8 28 21 29.6 19.6 30.2" stroke="#f0c6a2" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-      <path d="M37.6 26.6 C39 31 36.8 34.4 34.6 35.4" stroke="#f0c6a2" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-      <circle cx="19.4" cy="30" r="1.3" fill="#f0c6a2"/><circle cx="34.4" cy="35.2" r="1.3" fill="#f0c6a2"/>
-      <path d="M20.8 29.4 l.9 1.6 M35.4 34.2 l1 1.4" stroke="url(#sGold)" stroke-width=".8"/>
-      <!-- lotus seat -->
-      <path d="M17 49 C20 44 25 45.6 27.2 47.4 C28.8 43.6 31 43 32 43 C33 43 35.2 43.6 36.8 47.4 C39 45.6 44 44 47 49 Z" fill="url(#sLotus)"/>
-      <path d="M15 52 C20 47.6 26 49.6 32 48.4 C38 49.6 44 47.6 49 52 Z" fill="#d84a6c"/>
-      <path d="M27.2 47.4 L28.4 49.6 M36.8 47.4 L35.6 49.6 M32 43 L32 48.4" stroke="#fff" stroke-opacity=".5" stroke-width=".5"/>
-    </g>
-    <line class="off" x1="10" y1="54" x2="54" y2="10" stroke="#f3dc9e" stroke-width="3" stroke-linecap="round"/>
-  </svg>
+  <img class="sv" src="saraswati.png" alt="" width="64" height="64">
+  <svg class="off" viewBox="0 0 64 64" aria-hidden="true"><line x1="12" y1="52" x2="52" y2="12" stroke="#f3dc9e" stroke-width="4" stroke-linecap="round"/></svg>
 </button>
 
 <!-- Page 1 -->
@@ -498,43 +468,51 @@ section{position:relative;min-height:100svh;display:flex;flex-direction:column;a
       }
     });
   };
-  const pluck = (t, f, vol) => {
-    const g = ac.createGain(), lp = ac.createBiquadFilter();
-    lp.type = 'lowpass'; lp.frequency.setValueAtTime(2600, t); lp.frequency.exponentialRampToValueAtTime(700, t + 3);
-    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + .02); g.gain.exponentialRampToValueAtTime(.0001, t + 4.2);
-    for (const [type, mul, lv] of [['sawtooth', 1, .5], ['triangle', 2, .3], ['sine', 1.002, .6]]) {
-      const o = ac.createOscillator(), og = ac.createGain();
-      o.type = type; o.frequency.value = f * mul; og.gain.value = lv;
-      o.connect(og); og.connect(lp); o.start(t); o.stop(t + 4.4);
-    }
-    lp.connect(g); g.connect(master);
-  };
-  const SA = 138.6, seq = [SA * .75, SA * 2, SA * 2, SA];   // Pa · Sa' · Sa' · Sa
-  let next = 0, step = 0, bellAt = 0;
-  const schedule = () => {
-    while (next < ac.currentTime + 1.2) {
-      pluck(next, seq[step % 4], step % 4 === 3 ? .16 : .11);
-      step++; next += 1.15;
-      if (next > bellAt) { bell(next + .3, 1046, .12); bellAt = next + 16 + Math.random() * 6; }
-    }
+  // real flute music (flute.mp3) that starts with the bell and loops softly
+  const flute = new Audio('flute.mp3');
+  flute.loop = true; flute.preload = 'auto'; flute.volume = 0;
+  let fadeT;
+  const fadeTo = (v, ms, done) => {
+    clearInterval(fadeT);
+    const from = flute.volume, steps = 30; let i = 0;
+    fadeT = setInterval(() => { i++; flute.volume = Math.min(1, Math.max(0, from + (v - from) * i / steps)); if (i >= steps) { clearInterval(fadeT); done && done(); } }, ms / steps);
   };
   const startMusic = () => {
     try {
       ac = new (window.AudioContext || window.webkitAudioContext)();
       const comp = ac.createDynamicsCompressor(); master = ac.createGain(); master.gain.value = .55;
       master.connect(comp); comp.connect(ac.destination);
-      bell(ac.currentTime + .02, 523, .9);                 // the big bell when the guest rings it
-      next = ac.currentTime + 1.4; bellAt = next + 12;
-      setInterval(schedule, 400);
+      bell(ac.currentTime + .02, 523, .9);                 // the temple bell when the guest rings it
     } catch (e) {}
+    flute.play().then(() => setTimeout(() => fadeTo(.8, 2500), 900)).catch(() => {});
   };
   const mbtn = document.getElementById('music');
   mbtn.addEventListener('click', () => {
-    if (!ac) return;
     const on = mbtn.classList.toggle('playing');
     mbtn.setAttribute('aria-pressed', on);
-    on ? ac.resume() : ac.suspend();
+    if (on) { flute.play().catch(() => {}); fadeTo(.8, 1200); }
+    else fadeTo(0, 700, () => flute.pause());
   });
+  // pause when the guest leaves the page, resume when they return
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) flute.pause();
+    else if (mbtn.classList.contains('playing')) flute.play().catch(() => {});
+  });
+
+  // swaras floating out of Saraswati while the music plays
+  {
+    const sw = ['सा','रे','ग','म','प','ध','नि','सां'];
+    let k = 0;
+    setInterval(() => {
+      if (reduce || !mbtn.classList.contains('playing') || document.hidden) return;
+      const e = document.createElement('span'); e.className = 'swara'; e.setAttribute('aria-hidden','true'); e.textContent = sw[k++ % sw.length];
+      e.style.fontSize = (14 + Math.random() * 8) + 'px';
+      e.style.setProperty('--sx', (-30 - Math.random() * 70) + 'px');
+      e.style.setProperty('--sy', (-70 - Math.random() * 90) + 'px');
+      e.style.setProperty('--sr', (Math.random() * 30 - 15) + 'deg');
+      mbtn.appendChild(e); setTimeout(() => e.remove(), 3800);
+    }, 700);
+  }
 
   // ---------- open the invitation by ringing the bell ----------
   const gate = document.getElementById('gate');
